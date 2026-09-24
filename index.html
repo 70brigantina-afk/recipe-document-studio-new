@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Мои рецепты — книга Ирины</title>
+  <meta name="description" content="Личная книга рецептов: поиск по блюду, ингредиенту и автору.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar"><div class="brand"><span class="brand-icon">✳</span><span>Мои рецепты<small>Книга Ирины</small></span></div><button id="add" class="primary">＋ Добавить рецепт</button></header>
+  <main class="shell">
+    <div class="heading"><div><span class="eyebrow">Личная книга рецептов</span><h1>Что приготовим сегодня?</h1></div><span id="total" class="total"></span></div>
+    <div class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Название, ингредиент или автор…" aria-label="Поиск рецепта"></div>
+    <div id="categories" class="filters" role="group" aria-label="Категория"></div>
+    <div class="filter-row"><label>Автор <select id="author"><option value="">Все авторы</option></select></label><button id="export" class="quiet">Скачать мои рецепты</button><label class="quiet file-label">Загрузить копию<input id="restore" type="file" accept="application/json" hidden></label></div>
+    <div class="result"><h2 id="result-title">Все рецепты</h2><span id="count"></span></div>
+    <div id="groups"></div>
+  </main>
+  <dialog id="detail" class="panel"><button class="close" data-close aria-label="Закрыть">×</button><div id="detail-body"></div></dialog>
+  <dialog id="editor" class="panel"><button class="close" data-close aria-label="Закрыть">×</button><h2>Новый рецепт</h2><p class="muted">Вставьте ссылку для заполнения или введите рецепт вручную.</p>
+    <form id="recipe-form">
+      <label>Ссылка на рецепт<div class="import-line"><input id="import-url" type="url" placeholder="https://max.ru/… или другой сайт"><button id="import" type="button">Заполнить по ссылке</button></div></label>
+      <p id="import-status" class="hint" role="status">Автозаполнение работает, когда сайт источника разрешает чтение страницы. Проверьте текст перед сохранением.</p>
+      <label>Название<input name="title" required maxlength="180"></label>
+      <div class="two"><label>Категория<select name="category"><option>Выпечка</option><option>Десерты</option><option>Напитки</option><option>Мороженое</option><option>Кремы и соусы</option><option>Другое</option></select></label><label>Автор<input name="author"></label></div>
+      <label>Ингредиенты<textarea name="ingredients" rows="6" placeholder="По одному на строке"></textarea></label>
+      <label>Приготовление<textarea name="directions" rows="8" required></textarea></label>
+      <label>Ссылка на конкретный пост или страницу<input name="sourceUrl" type="url"></label>
+      <label>Ссылка на видео<input name="videoUrl" type="url"></label>
+      <label>Ссылка на фото<input name="imageUrl" type="url" placeholder="https://…"></label>
+      <label>Или фото с компьютера<input id="photo" type="file" accept="image/*"></label>
+      <button class="primary save" type="submit">Сохранить рецепт</button>
+      <p class="hint">Добавленные здесь рецепты хранятся в этом браузере. Скачайте копию, чтобы перенести их на другое устройство.</p>
+    </form>
+  </dialog>
+  <script src="app.js" defer></script>
+</body></html>
